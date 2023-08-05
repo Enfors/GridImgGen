@@ -18,6 +18,8 @@ def main():
     img_x_size = square_size * num_cols
     img_y_size = square_size * num_rows
 
+    print(f"x size: {img_x_size}, y size: {img_y_size}")
+
     # Create empty image
     img = Image.new(mode="RGB", size=(img_x_size, img_y_size),
                     color=(255, 255, 255))
@@ -27,11 +29,13 @@ def main():
     x, y = 0, 0
     while x < num_cols:
         draw.line((square_size * (x+1), 0,
-                   square_size * (x+1), img_x_size), fill=(127, 127, 127))
+                   square_size * (x+1), img_y_size), fill=(127, 127, 127))
+
         x += 1
     while y < num_rows:
         draw.line((0, square_size * (y+1),
-                   img_y_size, square_size * (y+1)), fill=(127, 127, 127))
+                   img_x_size, square_size * (y+1)), fill=(127, 127, 127))
+
         y += 1
 
     img.save(f"grid-{num_cols}x{num_rows}.png")
